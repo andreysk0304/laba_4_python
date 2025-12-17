@@ -3,7 +3,13 @@ from casino import Casino
 from entities.goose import WarGoose, HonkGoose, Goose
 
 
-def run_simulation(steps: int = 20, seed: int | None = None):
+def run_simulation(steps: int = 20, seed: int | None = None) -> None:
+    """
+    Функция запускает симуляцию игры
+    :param steps: Кол-во шагов в симуляции
+    :param seed: Сид симуляции ( при вводе одного и того же сида исход игры всегда будет одним)
+    :return: Ничего
+    """
     if seed is not None:
         random.seed(seed)
 

@@ -4,6 +4,10 @@ class Goose:
         self.honk_volume = honk_volume
 
     def honk(self):
+        """
+        Воспроизводит крик гуся (образно)
+        :return: Ничего
+        """
         return f"{self.name} ОРЁТ с громкостью {self.honk_volume} дб"
 
     def __repr__(self):
@@ -12,6 +16,11 @@ class Goose:
 
 class WarGoose(Goose):
     def attack(self, player):
+        """
+        Наносит урон определённому экземпляру игрока
+        :param player: Экземпляр класса игрока
+        :return: Строка лог действия
+        """
         damage = 5 * self.honk_volume
         player.change_balance(-damage)
         return f"{self.name} атакует {player.name} и отнимает {damage} монет!"
@@ -19,6 +28,11 @@ class WarGoose(Goose):
 
 class HonkGoose(Goose):
     def special_honk(self, players):
+        """
+        Наносит урон своим криком сразу всем игрокам в коллекции игроко
+        :param players: Коллекция всех игроков в игре
+        :return: Строка лог действия
+        """
         effect = -self.honk_volume
 
         for p in players:

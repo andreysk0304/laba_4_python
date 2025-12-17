@@ -6,9 +6,19 @@ class PlayerCollection:
         self._players = list(players) if players else []
 
     def add(self, player):
+        """
+        Добавляет нового игрока в коллекцию
+        :param player: Экземпляр класса игрока
+        :return: Ничего
+        """
         self._players.append(player)
 
     def remove(self, player):
+        """
+        Удаляет игрока из коллекции
+        :param player: Экземпляр класса игрока
+        :return: Ничего
+        """
         if player not in self._players:
             raise PlayerNotFoundError(player.name if hasattr(player, 'name') else None)
         self._players.remove(player)

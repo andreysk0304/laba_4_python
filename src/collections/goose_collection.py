@@ -6,9 +6,19 @@ class GooseCollection:
         self._geese = list(geese) if geese else []
 
     def add(self, goose):
+        """
+        Добавляет нового гуся в коллекцию
+        :param goose: Гусь (экземпляр класса гуся)
+        :return: Ничего
+        """
         self._geese.append(goose)
 
     def remove(self, goose):
+        """
+        Удаляет гуся из коллекции если он есть
+        :param goose:  Гусь (экземпляр класса гуся)
+        :return: Ничего
+        """
         if goose not in self._geese:
             raise GooseNotFoundError(goose.name if hasattr(goose, 'name') else None)
         self._geese.remove(goose)

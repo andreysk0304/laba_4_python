@@ -5,6 +5,11 @@ class Player:
 
 
     def change_balance(self, amount: int):
+        """
+        Изменяет баланс игрока
+        :param amount: Сумма на которую изменяется баланс
+        :return: Ничего
+        """
         self.balance += amount
 
     def __repr__(self):

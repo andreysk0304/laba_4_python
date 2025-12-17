@@ -4,8 +4,7 @@ from src.collections.player_collection import PlayerCollection
 from src.collections.goose_collection import GooseCollection
 from src.collections.balance_dict import CasinoBalance
 from src.entities.player import Player
-from src.entities.goose import Goose, WarGoose, HonkGoose
-from src.entities.chip import Chip
+from src.entities.goose import WarGoose, HonkGoose
 from src.exceptions import InsufficientPlayersError, InsufficientGeeseError, InsufficientWarGeeseError, InsufficientHonkGeeseError, PlayerAlreadyExistsError
 
 
@@ -17,7 +16,11 @@ class Casino:
 
 
     def register_player(self, name: str):
-        # Проверяем, не зарегистрирован ли уже игрок с таким именем
+        """
+        Функция которая регистрирует нового игрока в игру
+        :param name: Имя игрока
+        :return: Экземпляр класса игрока
+        """
         if name in [p.name for p in self.players]:
             raise PlayerAlreadyExistsError(name)
         p = Player(name)
@@ -27,10 +30,19 @@ class Casino:
 
 
     def register_goose(self, goose):
+        """
+        Функция регистрирует гуся в коллекцию гусей
+        :param goose: Экземпляр класса гуся
+        :return: Ничего
+        """
         self.geese.add(goose)
 
 
     def event_player_bet(self):
+        """
+        Функция имитирует случайную проигранную ставку случайного игрока из коллекции
+        :return: Ничего
+        """
         if not self.players:
             raise InsufficientPlayersError("ставка")
         player = random.choice(self.players)
@@ -41,6 +53,10 @@ class Casino:
 
 
     def event_player_win(self):
+        """
+        Функция имитирует случайную выигранную ставку случайного игрока из коллекции
+        :return: Ничего
+        """
         if not self.players:
             raise InsufficientPlayersError("выигрыш")
         player = random.choice(self.players)
@@ -51,6 +67,10 @@ class Casino:
 
 
     def event_goose_attack(self):
+        """
+        Функция имитирует атаку гуся на случайного игрока и снимает у него баланс (здоровье)
+        :return: Ничего
+        """
         war_geese = [g for g in self.geese if isinstance(g, WarGoose)]
         if not war_geese:
             raise InsufficientWarGeeseError()
@@ -63,6 +83,10 @@ class Casino:
 
 
     def event_goose_honk(self):
+        """
+        Фкнция имитирует крик случайного гуся, из за чего балансы игроков уменьшаются
+        :return: Ничего
+        """
         honk_geese = [g for g in self.geese if isinstance(g, HonkGoose)]
         if not honk_geese:
             raise InsufficientHonkGeeseError()
@@ -76,6 +100,10 @@ class Casino:
 
 
     def event_steal(self):
+        """
+        Функция имитирует кражу, случайный игрок крадёт у другого случайного игрока случайную сумму денег от 1 до 10 монет
+        :return: Ничего
+        """
         if not self.geese:
             raise InsufficientGeeseError("кража")
         if not self.players:
@@ -89,6 +117,10 @@ class Casino:
 
 
     def simulate_step(self):
+        """
+        Функция имитирует шаг симуляции, выбирает один из 5 ивентов в игре
+        :return: Ничего
+        """
         events = [
             self.event_player_bet,
             self.event_player_win,
