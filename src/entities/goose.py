@@ -1,3 +1,6 @@
+from src.entities.player import Player
+
+
 class Goose:
     def __init__(self, name: str, honk_volume: int = 1):
         self.name = name
@@ -22,6 +25,8 @@ class WarGoose(Goose):
         :return: Строка лог действия
         """
         damage = 5 * self.honk_volume
+        if not isinstance(player, Player):
+            raise TypeError('Вы пытаетесь изменить баланс не игроку')
         player.change_balance(-damage)
         return f"{self.name} атакует {player.name} и отнимает {damage} монет!"
 
@@ -36,6 +41,9 @@ class HonkGoose(Goose):
         effect = -self.honk_volume
 
         for p in players:
-            p.change_balance(effect)
+            if isinstance(p, Player):
+                p.change_balance(effect)
+            else:
+                raise TypeError('Вы пытаетесь изменить баланс не игроку.')
 
         return f"{self.name} устраивает крик! Все игроки теряют {abs(effect)} монет :D"

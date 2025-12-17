@@ -1,6 +1,7 @@
 import random
-from casino import Casino
-from entities.goose import WarGoose, HonkGoose, Goose
+
+from src.casino import Casino
+from src.entities.goose import WarGoose, HonkGoose
 
 
 def run_simulation(steps: int = 20, seed: int | None = None) -> None:
@@ -21,7 +22,7 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
 
     casino.register_goose(WarGoose("Гусяра намба ван", 2))
     casino.register_goose(HonkGoose("ГУСЫНЯ ( жена Гусяры )", 3))
-    casino.register_goose(Goose("просто гусь ю-ю", 1))
+    casino.register_goose(HonkGoose("просто гусь ю-ю", 1))
 
     print(f"Симуляция запущена! (seed = {seed if seed is not None else 'не задан'}, steps = {steps})")
     for step in range(steps):

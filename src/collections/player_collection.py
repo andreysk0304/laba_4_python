@@ -1,3 +1,4 @@
+from src.entities.player import Player
 from src.exceptions import PlayerNotFoundError, IndexOutOfRangeError
 
 
@@ -11,6 +12,8 @@ class PlayerCollection:
         :param player: Экземпляр класса игрока
         :return: Ничего
         """
+        if not isinstance(player, Player):
+            raise TypeError('Вы пытаетесь положить не пользователя в коллекцию пользователей.')
         self._players.append(player)
 
     def remove(self, player):

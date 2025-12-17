@@ -1,3 +1,4 @@
+from src.entities.goose import Goose
 from src.exceptions import GooseNotFoundError, IndexOutOfRangeError
 
 
@@ -11,12 +12,15 @@ class GooseCollection:
         :param goose: Гусь (экземпляр класса гуся)
         :return: Ничего
         """
+        print(goose)
+        if not isinstance(goose, Goose):
+            raise TypeError(f'Вы пытаетесь добавить не гуся в коллецию гусей! Тип: {type(goose)}')
         self._geese.append(goose)
 
     def remove(self, goose):
         """
         Удаляет гуся из коллекции если он есть
-        :param goose:  Гусь (экземпляр класса гуся)
+        :param goose: Гусь (экземпляр класса гуся)
         :return: Ничего
         """
         if goose not in self._geese:

@@ -1,6 +1,6 @@
 import sys
 
-from simulation import run_simulation
+from src.simulation import run_simulation
 from src.command import Command
 from src.exceptions import CommandNotFound
 

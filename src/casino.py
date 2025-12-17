@@ -72,6 +72,8 @@ class Casino:
         :return: Ничего
         """
         war_geese = [g for g in self.geese if isinstance(g, WarGoose)]
+        print(war_geese)
+        print([x.name for x in war_geese])
         if not war_geese:
             raise InsufficientWarGeeseError()
         if not self.players:
@@ -128,4 +130,5 @@ class Casino:
             self.event_goose_honk,
             self.event_steal,
         ]
+
         random.choice(events)()

@@ -1,4 +1,4 @@
-from exceptions import ParseCommandError, ToManyParamsError, NotEnoughParametersError
+from src.exceptions import ParseCommandError, ToManyParamsError, NotEnoughParametersError
 
 
 class Command:
