@@ -1,7 +1,6 @@
 import pytest
 
 from src.casino import Casino
-from src.entities.player import Player
 from src.entities.goose import Goose, WarGoose, HonkGoose
 from src.exceptions import PlayerAlreadyExistsError, InsufficientPlayersError, InsufficientGeeseError, InsufficientWarGeeseError, InsufficientHonkGeeseError
 
