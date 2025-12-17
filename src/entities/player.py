@@ -8,4 +8,4 @@ class Player:
         self.balance += amount
 
     def __repr__(self):
-        return f"Игрок {self.name} имеет {self.balance} монет"
+        return f"{self.__class__.__name__}(name={self.name}, balance={self.balance})"

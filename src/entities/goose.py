@@ -7,7 +7,7 @@ class Goose:
         return f"{self.name} ОРЁТ с громкостью {self.honk_volume} дб"
 
     def __repr__(self):
-        return f"{self.__class__.__name__} -> {self.name}"
+        return f"{self.__class__.__name__}(name={self.name})"
 
 
 class WarGoose(Goose):
