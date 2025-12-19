@@ -1,8 +1,8 @@
 import pytest
 
-from src.collections.player_collection import PlayerCollection
-from src.collections.goose_collection import GooseCollection
-from src.collections.balance_dict import CasinoBalance
+from src.game_collections.player_collection import PlayerCollection
+from src.game_collections.goose_collection import GooseCollection
+from src.game_collections.balance_dict import CasinoBalance
 from src.entities.player import Player
 from src.entities.goose import Goose, WarGoose, HonkGoose
 from src.exceptions import PlayerNotFoundError,GooseNotFoundError, IndexOutOfRangeError
